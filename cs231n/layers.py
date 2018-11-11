@@ -20,7 +20,10 @@ def affine_forward(x, w, b):
     - out: output, of shape (N, M)
     - cache: (x, w, b)
     """
-    out = None
+    N = x.shape[0]
+    x_reshaped = x.reshape(N,np.prod(x.shape[1:]))
+    out = x_reshaped.dot(w) + b
+    
     ###########################################################################
     # TODO: Implement the affine forward pass. Store the result in out. You   #
     # will need to reshape the input into rows.                               #
